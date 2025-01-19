@@ -12,12 +12,20 @@ module Regent
     class ProviderNotFoundError < StandardError; end
     class APIKeyNotFoundError < StandardError; end
     class ApiError < StandardError; end
+    class AdapterDisabledError < StandardError; end
 
-    def initialize(model, strict_mode: true, **options)
+    PROVIDER_MAPPING = {
+      /^gpt-|^text-davinci-|^openai/ => OpenAI,
+      /^claude-|^anthropic/ => Anthropic,
+      /^gemini/ => Gemini,
+      /^openrouter/ => OpenRouter
+    }.freeze
+
+    def initialize(model, provider: nil, strict_mode: true, **options)
       @model = model
       @strict_mode = strict_mode
       @options = options
-      instantiate_provider
+      @provider = initialize_provider(provider)
     end
 
     attr_reader :model, :options
@@ -27,7 +35,7 @@ module Regent
 
       messages = [{ role: "user", content: messages }] if messages.is_a?(String)
 
-      provider.invoke(messages, **args)
+      @provider.invoke(messages, **args)
 
     rescue Faraday::Error => error
       if error.respond_to?(:retryable?) && error.retryable? && retries < DEFAULT_RETRY_COUNT
@@ -41,19 +49,30 @@ module Regent
 
     attr_reader :provider, :strict_mode
 
-    def instantiate_provider
-      provider_class = find_provider_class
-      raise ProviderNotFoundError, "Provider for #{model} is not found" if provider_class.nil?
+    def initialize_provider(provider_class)
+      provider_class = detect_provider if provider_class.nil?
+      validate_provider!(provider_class)
 
-      @provider ||= create_provider(provider_class)
+      provider_class.new(**options.merge(
+        model: model,
+        provider: provider_class
+      ))
     end
 
-    def find_provider_class
-      PROVIDER_PATTERNS.find { |key, pattern| model.match?(pattern) }&.first
+    def detect_provider
+      provider_class = PROVIDER_MAPPING.find { |pattern, _| pattern.match?(model) }&.last
+      raise ProviderNotFoundError, "No provider found for model #{model}" unless provider_class
+      provider_class
     end
 
-    def create_provider(provider_class)
-      Regent::LLM.const_get(provider_class).new(**options.merge(model: model))
+    def validate_provider!(provider_class)
+      unless provider_class.ancestors.include?(Regent::LLM::Base)
+        raise ArgumentError, "Provider must be a subclass of Regent::LLM::Base"
+      end
+
+      unless provider_class.enabled?
+        raise AdapterDisabledError, "Provider #{provider_class.adapter_name} is disabled. Enable it in configuration first."
+      end
     end
 
     def handle_error(error)

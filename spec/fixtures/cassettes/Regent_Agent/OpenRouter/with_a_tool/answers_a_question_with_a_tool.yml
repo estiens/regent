@@ -1,0 +1,303 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":"## Instructions\nConsider
+        the following context: You are an AI agent\n\n\nYou are an AI agent reasoning
+        step-by-step to solve complex problems.\nYour reasoning process happens in
+        a loop of Thought, Action, Observation.\nThought - a description of your thoughts
+        about the question.\nAction - pick a an action from available tools if required.
+        If there are no tools that can help return an Answer saying you are not able
+        to help.\nObservation - is the result of running a tool.\nPAUSE - a stop sequence
+        that will always be present after an Action.\n\n## Available tools:\nprice_tool
+        - Get the price of cryptocurrencies\n\n## Example session\nQuestion: What
+        is the weather in London today?\nThought: I need to get current weather in
+        London\nAction: {\"tool\": \"weather_tool\", \"args\": [\"London\"]}\nPAUSE\n\nYou
+        will have a response form a user with Observation:\nObservation: It is 32
+        degress and Sunny\n\n... (this Thought/Action/Observation can repeat N times)\n\nThought:
+        I know the final answer\nAnswer: It is 32 degress and Sunny in London\n"},{"role":"user","content":"What
+        is the price of Bitcoin?"}],"model":"openrouter/auto","temperature":0.0,"stop":["PAUSE"]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 19 Jan 2025 07:38:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Clerk-Auth-Message:
+      - Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid,
+        token-carrier=header)
+      X-Clerk-Auth-Reason:
+      - token-invalid
+      X-Clerk-Auth-Status:
+      - signed-out
+      Vary:
+      - Accept-Encoding
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 90452b0c9f45a227-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1737272338-to9FGJDF1DOwhNhKtOH5\",\"provider\":\"Anthropic\",\"model\":\"anthropic/claude-3.5-sonnet\",\"object\":\"chat.completion\",\"created\":1737272338,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Let
+        me help you find out the current price of Bitcoin.\\n\\nThought: I need to
+        use the price tool to get the current price of Bitcoin.\\n\\nAction: {\\\"tool\\\":
+        \\\"price_tool\\\", \\\"args\\\": [\\\"bitcoin\\\"]}\\n\",\"refusal\":\"\"}}],\"usage\":{\"prompt_tokens\":266,\"completion_tokens\":53,\"total_tokens\":319}}"
+  recorded_at: Sun, 19 Jan 2025 07:39:00 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":"## Instructions\nConsider
+        the following context: You are an AI agent\n\n\nYou are an AI agent reasoning
+        step-by-step to solve complex problems.\nYour reasoning process happens in
+        a loop of Thought, Action, Observation.\nThought - a description of your thoughts
+        about the question.\nAction - pick a an action from available tools if required.
+        If there are no tools that can help return an Answer saying you are not able
+        to help.\nObservation - is the result of running a tool.\nPAUSE - a stop sequence
+        that will always be present after an Action.\n\n## Available tools:\nprice_tool
+        - Get the price of cryptocurrencies\n\n## Example session\nQuestion: What
+        is the weather in London today?\nThought: I need to get current weather in
+        London\nAction: {\"tool\": \"weather_tool\", \"args\": [\"London\"]}\nPAUSE\n\nYou
+        will have a response form a user with Observation:\nObservation: It is 32
+        degress and Sunny\n\n... (this Thought/Action/Observation can repeat N times)\n\nThought:
+        I know the final answer\nAnswer: It is 32 degress and Sunny in London\n"},{"role":"user","content":"What
+        is the price of Bitcoin?"},{"role":"assistant","content":"Let me help you
+        find out the current price of Bitcoin.\n\nThought: I need to use the price
+        tool to get the current price of Bitcoin.\n\nAction: {\"tool\": \"price_tool\",
+        \"args\": [\"bitcoin\"]}\n"},{"role":"user","content":"Observation: {''BTC'':
+        ''$107,000'', ''ETH'': ''$6,000''}"}],"model":"openrouter/auto","temperature":0.0,"stop":["PAUSE"]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 19 Jan 2025 07:39:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Clerk-Auth-Message:
+      - Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid,
+        token-carrier=header)
+      X-Clerk-Auth-Reason:
+      - token-invalid
+      X-Clerk-Auth-Status:
+      - signed-out
+      Vary:
+      - Accept-Encoding
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 90452b231c934c92-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n{\"id\":\"gen-1737272342-uoWJnkpTqflDNVqvS73r\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-2024-08-06\",\"object\":\"chat.completion\",\"created\":1737272342,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Thought:
+        I have obtained the current price of Bitcoin.\\n\\nAnswer: The current price
+        of Bitcoin (BTC) is $107,000.\",\"refusal\":\"\"}}],\"system_fingerprint\":\"fp_50cad350e4\",\"usage\":{\"prompt_tokens\":309,\"completion_tokens\":27,\"total_tokens\":336}}"
+  recorded_at: Sun, 19 Jan 2025 07:39:02 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":"## Instructions\nConsider
+        the following context: You are an AI agent\n\n\nYou are an AI agent reasoning
+        step-by-step to solve complex problems.\nYour reasoning process happens in
+        a loop of Thought, Action, Observation.\nThought - a description of your thoughts
+        about the question.\nAction - pick a an action from available tools if required.
+        If there are no tools that can help return an Answer saying you are not able
+        to help.\nObservation - is the result of running a tool.\nPAUSE - a stop sequence
+        that will always be present after an Action.\n\n## Available tools:\nprice_tool
+        - Get the price of cryptocurrencies\n\n## Example session\nQuestion: What
+        is the weather in London today?\nThought: I need to get current weather in
+        London\nAction: {\"tool\": \"weather_tool\", \"args\": [\"London\"]}\nPAUSE\n\nYou
+        will have a response form a user with Observation:\nObservation: It is 32
+        degress and Sunny\n\n... (this Thought/Action/Observation can repeat N times)\n\nThought:
+        I know the final answer\nAnswer: It is 32 degress and Sunny in London\n"},{"role":"user","content":"What
+        is the price of Ethereum?"}],"model":"openrouter/auto","temperature":0.0,"stop":["PAUSE"]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 19 Jan 2025 07:39:03 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Clerk-Auth-Message:
+      - Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid,
+        token-carrier=header)
+      X-Clerk-Auth-Reason:
+      - token-invalid
+      X-Clerk-Auth-Status:
+      - signed-out
+      Vary:
+      - Accept-Encoding
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 90452b2debd74ca2-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1737272343-8gBn5JDLvQBr5Qqmfdia\",\"provider\":\"Anthropic\",\"model\":\"anthropic/claude-3.5-sonnet\",\"object\":\"chat.completion\",\"created\":1737272343,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Let
+        me help you find out the current price of Ethereum.\\n\\nThought: I need to
+        use the price tool to check Ethereum's current price.\\n\\nAction: {\\\"tool\\\":
+        \\\"price_tool\\\", \\\"args\\\": [\\\"ethereum\\\"]}\\n\",\"refusal\":\"\"}}],\"usage\":{\"prompt_tokens\":267,\"completion_tokens\":54,\"total_tokens\":321}}"
+  recorded_at: Sun, 19 Jan 2025 07:39:06 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":"## Instructions\nConsider
+        the following context: You are an AI agent\n\n\nYou are an AI agent reasoning
+        step-by-step to solve complex problems.\nYour reasoning process happens in
+        a loop of Thought, Action, Observation.\nThought - a description of your thoughts
+        about the question.\nAction - pick a an action from available tools if required.
+        If there are no tools that can help return an Answer saying you are not able
+        to help.\nObservation - is the result of running a tool.\nPAUSE - a stop sequence
+        that will always be present after an Action.\n\n## Available tools:\nprice_tool
+        - Get the price of cryptocurrencies\n\n## Example session\nQuestion: What
+        is the weather in London today?\nThought: I need to get current weather in
+        London\nAction: {\"tool\": \"weather_tool\", \"args\": [\"London\"]}\nPAUSE\n\nYou
+        will have a response form a user with Observation:\nObservation: It is 32
+        degress and Sunny\n\n... (this Thought/Action/Observation can repeat N times)\n\nThought:
+        I know the final answer\nAnswer: It is 32 degress and Sunny in London\n"},{"role":"user","content":"What
+        is the price of Ethereum?"},{"role":"assistant","content":"Let me help you
+        find out the current price of Ethereum.\n\nThought: I need to use the price
+        tool to check Ethereum''s current price.\n\nAction: {\"tool\": \"price_tool\",
+        \"args\": [\"ethereum\"]}\n"},{"role":"user","content":"Observation: {''BTC'':
+        ''$107,000'', ''ETH'': ''$6,000''}"}],"model":"openrouter/auto","temperature":0.0,"stop":["PAUSE"]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 19 Jan 2025 07:39:07 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Clerk-Auth-Message:
+      - Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid,
+        token-carrier=header)
+      X-Clerk-Auth-Reason:
+      - token-invalid
+      X-Clerk-Auth-Status:
+      - signed-out
+      Vary:
+      - Accept-Encoding
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 90452b437f7c4ca9-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n{\"id\":\"gen-1737272347-ylBA0WTwkl2JmOLBBRxc\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-2024-08-06\",\"object\":\"chat.completion\",\"created\":1737272347,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Thought:
+        I have obtained the current price of Ethereum.\\n\\nAnswer: The current price
+        of Ethereum (ETH) is $6,000.\",\"refusal\":\"\"}}],\"system_fingerprint\":\"fp_50cad350e4\",\"usage\":{\"prompt_tokens\":308,\"completion_tokens\":27,\"total_tokens\":335}}"
+  recorded_at: Sun, 19 Jan 2025 07:39:08 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":"## Instructions\nConsider
+        the following context: You are an AI agent\n\n\nYou are an AI agent reasoning
+        step-by-step to solve complex problems.\nYour reasoning process happens in
+        a loop of Thought, Action, Observation.\nThought - a description of your thoughts
+        about the question.\nAction - pick a an action from available tools if required.
+        If there are no tools that can help return an Answer saying you are not able
+        to help.\nObservation - is the result of running a tool.\nPAUSE - a stop sequence
+        that will always be present after an Action.\n\n## Available tools:\n\n\n##
+        Example session\nQuestion: What is the weather in London today?\nThought:
+        I need to get current weather in London\nAction: {\"tool\": \"weather_tool\",
+        \"args\": [\"London\"]}\nPAUSE\n\nYou will have a response form a user with
+        Observation:\nObservation: It is 32 degress and Sunny\n\n... (this Thought/Action/Observation
+        can repeat N times)\n\nThought: I know the final answer\nAnswer: It is 32
+        degress and Sunny in London\n"},{"role":"user","content":"What is the capital
+        of Japan?"}],"model":"openrouter/auto","temperature":0.0,"stop":["PAUSE"]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 19 Jan 2025 07:38:43 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Clerk-Auth-Message:
+      - Invalid JWT form. A JWT consists of three parts separated by dots. (reason=token-invalid,
+        token-carrier=header)
+      X-Clerk-Auth-Reason:
+      - token-invalid
+      X-Clerk-Auth-Status:
+      - signed-out
+      Vary:
+      - Accept-Encoding
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 90452aae0a55ad00-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1737272323-GGbuqPyUbjziAhHigdDQ\",\"provider\":\"Amazon
+        Bedrock\",\"model\":\"anthropic/claude-3.5-sonnet\",\"object\":\"chat.completion\",\"created\":1737272323,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Thought:
+        This is a basic geographical knowledge question that doesn't require any special
+        tools. I can provide the answer directly.\\n\\nAnswer: Tokyo is the capital
+        city of Japan.\",\"refusal\":\"\"}}],\"usage\":{\"prompt_tokens\":254,\"completion_tokens\":39,\"total_tokens\":293}}"
+  recorded_at: Sun, 19 Jan 2025 07:38:45 GMT
+recorded_with: VCR 6.3.1

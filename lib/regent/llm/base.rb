@@ -7,6 +7,16 @@ module Regent
     class Base
       include Concerns::Dependable
 
+      class << self
+        def enabled?
+          Configuration.enabled?(adapter_name)
+        end
+
+        def adapter_name
+          name.split("::").last.downcase.to_sym
+        end
+      end
+
       def initialize(model:, api_key: nil, **options)
         @model = model
         @api_key = api_key || api_key_from_env
@@ -33,6 +43,8 @@ module Regent
       end
 
       def api_key_from_env
+        return nil unless self.class.enabled?
+
         ENV.fetch(self.class::ENV_KEY) do
           raise APIKeyNotFoundError, "API key not found. Make sure to set #{self.class::ENV_KEY} environment variable."
         end
